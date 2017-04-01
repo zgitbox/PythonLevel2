@@ -57,6 +57,10 @@ class Enterprise:
     def employee_list(self):
         for e in self.employees: 
             print('  {}'.format(e))
+    # Выводим информацию о предприятии
+    def info(self):
+        print(self)
+        self.employee_list()
 #------------------------------------------------------------------------------
 # Класс "Человек" 
 #------------------------------------------------------------------------------
@@ -91,26 +95,23 @@ class Employee(Person):
 # Тест
 #------------------------------------------------------------------------------
 # Создаём предприятие
+print('Создаём предприятие')
 enterprise = Enterprise('Alphabet')
-print(enterprise)
+enterprise.info()
 # Создаём первого сотрудника через переменную
 print('\nСоздаём первого сотрудника')
 employee1 = Employee('Brin', 'Sergey', 'Michaylovich', '21.03.1973', '+18880000001', '00000001', 'top', '1')
-print(employee1)
 enterprise.add_employee(employee1)
-print(enterprise)
+enterprise.info()
 # Создаём второго сотрудника без промежуточной переменной
 print('\nСоздаём второго сотрудника')
 enterprise.add_employee(Employee('Black', 'John', '', '09.09.1989', '+18567834001', '03423401', 'any', '10500'))
-print(enterprise)
-enterprise.employee_list()
+enterprise.info()
 # Создаём третьего сотрудника с уже имеющимся табельным номером
 print('\nПытаемся создать третьего сотрудника с уже имеющимся табельным номером')
 enterprise.add_employee(Employee('White', 'John', '', '01.09.1989', '+18567834001', '03423401', 'any', '5000'))
-print(enterprise)
-enterprise.employee_list()
+enterprise.info()
 # Удаляем первого сотрудника подавая на вход весь экземпляр объекта Сотрудник
 print('\nУдаляем первого сотрудника')
 enterprise.rem_employee(employee1.get_emp_id())
-print(enterprise)
-enterprise.employee_list()
+enterprise.info()
